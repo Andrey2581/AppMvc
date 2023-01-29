@@ -1,0 +1,70 @@
+﻿@model App.ViewModels.PessoaViewModel
+
+@{
+    ViewData["Title"] = "Editar Pessoa";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+
+        <form asp-action="Edit">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+
+                    <label asp-for="Nome"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+
+                    <label asp-for="Documento"></label>
+                    <input asp-for="Documento" class="form-control" />
+                    <span asp-validation-for="Documento" class="text-danger"></span>
+
+                </div>
+                <div class="form-group col-md-6">
+
+                    <label asp-for="TipoPessoa"></label>
+                    <div>
+                        <input type="radio" value="1" asp-for="TipoPessoa" checked="@(Model.TipoPessoa == 1)" /> Pessoa Física
+                        <input type="radio" value="2" asp-for="TipoPessoa" checked="@(Model.TipoPessoa == 2)" /> Pessoa Jurídica
+                    </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Telefone"></label>
+                    <input asp-for="Telefone" class="form-control" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+
+                    <div>
+                        &nbsp;
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+
+<div id="EnderecoTarget">
+    <partial name="_DetalhesEndereco" />
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

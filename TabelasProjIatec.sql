@@ -11,7 +11,7 @@ GO
 BEGIN TRANSACTION;
 GO
 
-CREATE TABLE [Produtos] (
+CREATE TABLE [Pessoas] (
     [Id] uniqueidentifier NOT NULL,
     [Nome] nvarchar(200) NOT NULL,
     [DataNascimento] datetime2 NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE [Produtos] (
     [TipoPessoa] int NOT NULL,
     [Telefone] nvarchar(13) NOT NULL,
     [Ativo] bit NOT NULL,
-    CONSTRAINT [PK_Produtos] PRIMARY KEY ([Id])
+    CONSTRAINT [PK_Pessoas] PRIMARY KEY ([Id])
 );
 GO
 
@@ -34,7 +34,7 @@ CREATE TABLE [Enderecos] (
     [Cidade] nvarchar(100) NOT NULL,
     [Estado] nvarchar(50) NOT NULL,
     CONSTRAINT [PK_Enderecos] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_Enderecos_Produtos_PessoaId] FOREIGN KEY ([PessoaId]) REFERENCES [Produtos] ([Id])
+    CONSTRAINT [FK_Enderecos_Produtos_PessoaId] FOREIGN KEY ([PessoaId]) REFERENCES [Pessoas] ([Id])
 );
 GO
 
